@@ -10,6 +10,14 @@ A live instance of this code is available at [aka.ms/webauthntest](https://aka.m
 6. Open this repository in VS Code
 7. Launch program - configurations should already be set
 
+## Running in Docker
+
+1. Build the docker image for the `webauthntest` container: `docker build -t webauthntest`
+2. Create an `.env` file in the root of this repository, with `HOSTNAME` and `JWT_SECRET` defined.  See example `.env.example`.
+3. Generate certificates for the container and place them in the `./certs` folder, as `HOSTNAME.crt` and `HOSTNAME.key` files, where `HOSTNAME` is the fully qualified domain name defined in the `.env` file.
+4. Bring up the containers with `docker compose up` 
+5. Navigate to the test app at `https://HOSTNAME`.  It may take some time for the mongodb container to fully start up.  The `webauthntest` continer will continue to restart until the mongodb container is fully online. 
+
 ## Deploying to production
 Things you need to deploy
 - Create a app services web project
